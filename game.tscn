@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://clxmgkd2gmrl1"]
+
+[ext_resource type="Shader" uid="uid://b5hme27tfpnpa" path="res://shaders/sky.gdshader" id="1_7jktm"]
+[ext_resource type="Texture2D" uid="uid://dbdd6126scb3v" path="res://textures/grass.png" id="1_fc0e3"]
+[ext_resource type="Shader" uid="uid://d1iitsqxfemrd" path="res://shaders/color_quantization_and_dithering.gdshader" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://l4tq0wrhonfy" path="res://shaders/quantization_and_dithering.gd" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://dbn3iurmgtshd" path="res://player/player.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://cm4gueg05andt" path="res://models/tent.blend" id="6_ryrav"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7jktm"]
+noise_type = 3
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ryrav"]
+noise = SubResource("FastNoiseLite_7jktm")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryrav"]
+shader = ExtResource("1_7jktm")
+shader_parameter/use_directional_light = false
+shader_parameter/sun_color = Color(0.5607, 0.59997, 0.63, 1)
+shader_parameter/sun_energy = 15.0
+shader_parameter/cloud_color = Color(0, 0, 0, 1)
+shader_parameter/cloud_density = 5.0
+shader_parameter/cloud_depth = 2.0
+shader_parameter/cloud_sag = 2.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ryrav")
+shader_parameter/noise_tiling = Vector2(1, 1)
+shader_parameter/wind_speed = Vector2(0.03, 0.04)
+shader_parameter/ground_bottom_color = Color(0.07, 0.057586666, 0.0434, 1)
+shader_parameter/ground_curve = 0.04
+shader_parameter/exposure = 0.10000000475
+
+[sub_resource type="Sky" id="Sky_eow3j"]
+sky_material = SubResource("ShaderMaterial_ryrav")
+
+[sub_resource type="Environment" id="Environment_mwb40"]
+background_mode = 2
+sky = SubResource("Sky_eow3j")
+ambient_light_source = 3
+ambient_light_color = Color(0.21330002, 0.23976001, 0.27, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 3
+tonemap_exposure = 1.5
+fog_light_energy = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feb5d"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwb40"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2o6t"]
+albedo_texture = ExtResource("1_fc0e3")
+uv1_scale = Vector3(50, 50, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_feb5d"]
+shader = ExtResource("2_e2o6t")
+shader_parameter/viewport_res = Vector2(0, 0)
+shader_parameter/virtual_res = Vector2(0, 0)
+
+[node name="Game" type="Node"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_7jktm")]
+
+[node name="World" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_mwb40")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.8660253, -0.4698463, 0.17101008, 0, 0.34202015, 0.9396926, -0.49999997, -0.81379765, 0.29619813, 0, 5, 0)
+light_color = Color(0.4956, 0.52392, 0.59, 1)
+light_energy = 0.348
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Ground" type="Node" parent="World"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+shape = SubResource("BoxShape3D_feb5d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("PlaneMesh_mwb40")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_e2o6t")
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+
+[node name="QuantizationAndDithering" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_feb5d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_feb5d")
+virtual_res_y = 240.0
+
+[node name="tent" parent="." instance=ExtResource("6_ryrav")]
+transform = Transform3D(-0.4938205, 0, 0.86956394, 0, 1, 0, -0.86956394, 0, -0.4938205, -2.2700088, 0.0051511526, -5.617932)
