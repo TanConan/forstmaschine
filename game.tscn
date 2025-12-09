@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://clxmgkd2gmrl1"]
+[gd_scene load_steps=18 format=3 uid="uid://clxmgkd2gmrl1"]
 
 [ext_resource type="Shader" uid="uid://b5hme27tfpnpa" path="res://shaders/sky.gdshader" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://dbdd6126scb3v" path="res://textures/grass.png" id="1_fc0e3"]
@@ -53,6 +53,14 @@ size = Vector3(100, 1, 100)
 albedo_texture = ExtResource("1_fc0e3")
 uv1_scale = Vector3(50, 50, 50)
 
+[sub_resource type="Gradient" id="Gradient_ryrav"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eow3j"]
+gradient = SubResource("Gradient_ryrav")
+width = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_feb5d"]
 shader = ExtResource("2_e2o6t")
 shader_parameter/viewport_res = Vector2(0, 0)
@@ -80,7 +88,6 @@ sky_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
 shape = SubResource("BoxShape3D_feb5d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/StaticBody3D"]
@@ -88,6 +95,35 @@ transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
 mesh = SubResource("PlaneMesh_mwb40")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_e2o6t")
+
+[node name="Tent" type="Node3D" parent="World"]
+transform = Transform3D(-0.45554492, 0, 0.8902128, 0, 1, 0, -0.8902128, 0, -0.45554492, -2.255, 0.005, -5.664)
+
+[node name="TentModel" parent="World/Tent" instance=ExtResource("6_ryrav")]
+
+[node name="Rope1" type="Sprite3D" parent="World/Tent"]
+transform = Transform3D(0.4057348, -0.2800399, -0.87003285, 0.59754515, 0.80156934, 0.020658467, 0.6916062, -0.5282657, 0.4925609, -1.3348408, 0.14341171, -1.181991)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
+
+[node name="Rope2" type="Sprite3D" parent="World/Tent"]
+transform = Transform3D(0.34856442, -0.28287366, 0.8935797, 0.5975452, 0.80156946, 0.02065844, -0.72210985, 0.52675354, 0.44842848, -1.3242693, 0.14341174, 1.1881137)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
+
+[node name="Rope3" type="Sprite3D" parent="World/Tent"]
+transform = Transform3D(-0.30506045, 0.25108877, -0.9186361, 0.59754515, 0.80156934, 0.020658454, 0.7415375, -0.5426243, -0.3945639, 1.3152661, 0.14341171, -1.1966825)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
+
+[node name="Rope4" type="Sprite3D" parent="World/Tent"]
+transform = Transform3D(-0.35339838, 0.22426361, 0.90819335, 0.57976747, 0.814414, 0.024494028, -0.73415214, 0.53519696, -0.41783336, 1.329656, 0.14275034, 1.1950873)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
@@ -100,6 +136,3 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_feb5d")
 virtual_res_y = 240.0
-
-[node name="tent" parent="." instance=ExtResource("6_ryrav")]
-transform = Transform3D(-0.4938205, 0, 0.86956394, 0, 1, 0, -0.86956394, 0, -0.4938205, -2.2700088, 0.0051511526, -5.617932)
