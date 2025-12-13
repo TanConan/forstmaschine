@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj4shlmoo5kov"]
+
+[ext_resource type="PackedScene" uid="uid://cm4gueg05andt" path="res://environment/tent/tent.blend" id="1_1lri4"]
+
+[sub_resource type="Gradient" id="Gradient_ryrav"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eow3j"]
+gradient = SubResource("Gradient_ryrav")
+width = 1
+
+[node name="Tent" type="Node3D"]
+
+[node name="TentModel" parent="." instance=ExtResource("1_1lri4")]
+
+[node name="Rope1" type="Sprite3D" parent="."]
+transform = Transform3D(0.6916062, -0.5282657, 0.49256092, 0.59754515, 0.80156934, 0.020658476, -0.40573487, 0.28003994, 0.8700328, -1.1797851, 0.14341171, 1.3336934)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
+
+[node name="Rope2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.72210985, 0.52675354, 0.44842845, 0.5975452, 0.80156946, 0.020658446, -0.34856436, 0.2828736, -0.8935798, 1.187198, 0.1435226, 1.3226086)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
+
+[node name="Rope3" type="Sprite3D" parent="."]
+transform = Transform3D(0.7415376, -0.54262435, -0.39456394, 0.5975452, 0.80156946, 0.020658452, 0.30506045, -0.25108877, 0.9186362, -1.1910524, 0.14341171, -1.3111256)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)
+
+[node name="Rope4" type="Sprite3D" parent="."]
+transform = Transform3D(-0.7341521, 0.53519696, -0.4178334, 0.57976747, 0.814414, 0.024494031, 0.35339838, -0.22426367, -0.90819335, 1.198098, 0.14275034, -1.3264246)
+texture = SubResource("GradientTexture1D_eow3j")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1)

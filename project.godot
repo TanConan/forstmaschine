@@ -25,7 +25,7 @@ window/stretch/aspect="keep_height"
 [file_customization]
 
 folder_colors={
-"res://models/": "orange",
+"res://environment/": "orange",
 "res://player/": "blue",
 "res://shaders/": "red",
 "res://textures/": "green"

@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://qev0blyxqstx"]
+
+[ext_resource type="ArrayMesh" uid="uid://cp06ddwnxs6aw" path="res://environment/rocks/rocks_rock_1.res" id="1_y8xiq"]
+[ext_resource type="ArrayMesh" uid="uid://vmbijo1v35oh" path="res://environment/rocks/rocks_rock_2.res" id="2_luani"]
+[ext_resource type="ArrayMesh" uid="uid://dr0a1mwfir6rd" path="res://environment/rocks/rocks_rock_3.res" id="3_q04sb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_osfom"]
+
+[node name="Campfire" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_osfom")
+
+[node name="RocksRock1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6348001, 0.010825574, -0.7726007, -0.017051041, 0.9998546, 0, 0.7724883, 0.013173644, 0.63489234, -0.3572972, 0.01745398, -0.0027046874)
+mesh = ExtResource("1_y8xiq")
+
+[node name="RocksRock11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9833307, 0.016769249, 0.18105115, 0.11420263, 0.7178663, -0.68675035, -0.14148694, 0.69597906, 0.70398504, 0.36206946, -0.046838798, 0.0107069835)
+mesh = ExtResource("1_y8xiq")
+
+[node name="RocksRock2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.9553609, 0, 0.29544127, 0, 1, 0, -0.29544127, 0, -0.9553609, -0.3091595, 0, 0.20765918)
+mesh = ExtResource("2_luani")
+
+[node name="RocksRock9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9504314, 0.10145569, -0.29391685, 0.096926786, -0.9948401, -0.029974192, -0.2954413, 0, -0.955361, 0.18117537, 0, 0.32134196)
+mesh = ExtResource("2_luani")
+
+[node name="RocksRock3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4474664, 0.19044921, 0.87378657, -0.086808465, 0.98169714, -0.16951455, -0.89007765, -1.4901161e-08, 0.45580906, -0.17505884, 1.1920929e-07, 0.32744476)
+mesh = ExtResource("3_q04sb")
+
+[node name="RocksRock8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.44746634, 0.1904492, 0.8737865, 0.86605537, 0.15133704, -0.4764924, -0.22298384, 0.96996194, -0.097221255, -0.010617897, 1.1920929e-07, 0.36900908)
+mesh = ExtResource("3_q04sb")
+
+[node name="RocksRock12" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.34747103, -0.5266466, 0.77582663, -0.8938438, 0.06401807, 0.44378453, -0.28338456, -0.84767026, -0.44849557, 0.32704222, -0.043269053, -0.1352649)
+mesh = ExtResource("3_q04sb")
+
+[node name="RocksRock4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.9754573, 0.041488808, 0.21624458, -0.024815425, -0.9965451, 0.07925807, 0.21878546, 0.07194664, 0.9731169, 0.047639586, 0.026754063, -0.32203448)
+mesh = ExtResource("1_y8xiq")
+
+[node name="RocksRock5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.48155493, 0, 0.876416, 0, 1, 0, -0.876416, 0, 0.48155493, -0.16124803, 0, -0.3015808)
+mesh = ExtResource("2_luani")
+
+[node name="RocksRock7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.43418694, -0.4071993, -0.8035362, -0.45806125, -0.66827404, 0.58616525, -0.77566844, 0.6225741, 0.10363358, 0.2521308, 0, -0.25295448)
+mesh = ExtResource("2_luani")
+
+[node name="RocksRock6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.78189003, -0.038304888, -0.62223834, -0.08680845, 0.98169696, -0.16951454, 0.61734295, 0.18655731, 0.76425385, -0.31349713, 1.1920929e-07, -0.18477137)
+mesh = ExtResource("3_q04sb")
+
+[node name="RocksRock10" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.6554119, -0.4153464, 0.6308109, 0.43511254, -0.8903278, -0.13413927, 0.61734295, 0.18655731, 0.76425385, 0.34815, 1.1920929e-07, 0.16974014)
+mesh = ExtResource("3_q04sb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+light_color = Color(1, 0.5, 0, 1)
+light_energy = 2.0
+light_size = 0.4
