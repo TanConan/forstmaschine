@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qev0blyxqstx"]
+[gd_scene load_steps=6 format=3 uid="uid://qev0blyxqstx"]
 
 [ext_resource type="ArrayMesh" uid="uid://cp06ddwnxs6aw" path="res://environment/rocks/rocks_rock_1.res" id="1_y8xiq"]
 [ext_resource type="ArrayMesh" uid="uid://vmbijo1v35oh" path="res://environment/rocks/rocks_rock_2.res" id="2_luani"]
-[ext_resource type="ArrayMesh" uid="uid://dr0a1mwfir6rd" path="res://environment/rocks/rocks_rock_3.res" id="3_q04sb"]
+[ext_resource type="ArrayMesh" uid="uid://fg3bri5pwosb" path="res://environment/rocks/rocks_rock_3.res" id="3_q04sb"]
+[ext_resource type="SpriteFrames" uid="uid://metvk7qxd02t" path="res://environment/fire/fire_frames.tres" id="4_q04sb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_osfom"]
 
@@ -64,3 +65,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 light_color = Color(1, 0.5, 0, 1)
 light_energy = 2.0
 light_size = 0.4
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+offset = Vector2(0, 16)
+pixel_size = 0.015
+billboard = 2
+sprite_frames = ExtResource("4_q04sb")
+autoplay = "default"
