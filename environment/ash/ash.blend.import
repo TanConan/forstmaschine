@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cm4gueg05andt"
-path="res://.godot/imported/tent.blend-e473b4d888817f9adafbe9f0a057e6f1.scn"
+uid="uid://dlrg2jws2cgvl"
+path="res://.godot/imported/ash.blend-659767f7e6f145d47797185036e5d6c1.scn"
 
 [deps]
 
-source_file="res://environment/tent/tent.blend"
-dest_files=["res://.godot/imported/tent.blend-e473b4d888817f9adafbe9f0a057e6f1.scn"]
+source_file="res://environment/ash/ash.blend"
+dest_files=["res://.godot/imported/ash.blend-659767f7e6f145d47797185036e5d6c1.scn"]
 
 [params]
 
@@ -37,14 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:tent": {
-"generate/physics": true,
-"physics/shape_type": 1
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
