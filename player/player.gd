@@ -13,15 +13,8 @@ var footstep_time := 0.0
 @export var footstep_velocity_multiplier : Curve
 var prev_on_floor := true
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var gamepad_look_input = Input.get_vector("look_left", "look_right", "look_up", "look_down")
 	if gamepad_look_input.length() >= 0.0:
 		rotate_head(gamepad_look_input * gamepad_sensitivity)
