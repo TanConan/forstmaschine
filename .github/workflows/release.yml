@@ -16,6 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender
+
       - name: Download Godot
         run: |
           wget -q https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip
@@ -31,10 +36,6 @@ jobs:
 
           mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
           cp -r templates/templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
-
-      - name: Import Assets
-        run: |
-          godot --headless --editor --quit-after-step 1
 
       - name: Export Web build
         run: |
